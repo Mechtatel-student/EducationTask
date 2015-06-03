@@ -22,9 +22,9 @@ namespace Miner
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            GameToOpenAllCells();
-            GameToNumberMine();
-            GameToNumberMine(2);
+            Game();
+            Game(false);
+            Game(false, 2);
         }
 
 
@@ -32,14 +32,14 @@ namespace Miner
         ///  Вариант игры, когда игра не заканчивается, если обнаруженна мина.
         /// </summary>
         /// 
-        static void GameToOpenAllCells()
+        static void Game(bool isOpenCells=true, int mines=1)
         {
             Console.WriteLine("Enter count_of_rows and count_of_colunms:");
             Console.Write("Count_of_rows = ");
             int n = IsNatural("Enter natural number:\r\n Count_of_rows = ");
             Console.Write("Count_of_colunms = ");
             int m = IsNatural("Enter natural number:\r\n Count_of_columns = ");
-            int[,] a = new int[n, m];
+            
             int countMines;
 
             int x = 0, y = 0;
@@ -52,7 +52,7 @@ namespace Miner
                     Console.WriteLine("Pole can contain count of mines <= " + n * m);
             }
             while (countMines > n * m);
-            a = Initialize(n, m, countMines);
+            int [,] a = Initialize(n, m, countMines);
             PrintArray(a);
             Console.ReadKey();
             Console.Clear();
@@ -63,7 +63,10 @@ namespace Miner
             Console.ForegroundColor = prevFColor;
             Console.WriteLine();
             PrintColorPoleSelelction(a);
-            int count = 0;
+           
+            int countOpenCells = 0;
+            int countOpenMines = 0;
+
             do
             {
                 Console.WriteLine("Enter number_of_rou <= {0} and number_of_colunm <= {1}:", a.GetLength(0), a.GetLength(1));
@@ -85,12 +88,14 @@ namespace Miner
                     }
                     else
                     {
+                        if (!isOpenCells)
+                            countOpenMines++;
                         Console.ForegroundColor = ConsoleColor.Magenta;
                         Console.WriteLine("This cell contain the mine !");
                     }
                     Console.ForegroundColor = prevFColor;
                     Console.WriteLine();
-                    count += Change(ref a, x - 1, y - 1);
+                    countOpenCells += Change(a, x - 1, y - 1);
                     PrintColorPoleSelelction(a, x, y);
                     Console.WriteLine();
                 }
@@ -105,11 +110,25 @@ namespace Miner
                     }
 
             }
-            while (Math.Pow(x, 2) + Math.Pow(y, 2) != 0 && count < a.Length);
+            while (Math.Pow(x, 2) + Math.Pow(y, 2) != 0 && countOpenCells < a.Length && 
+                                                     (isOpenCells || countOpenMines < mines));
             if (Math.Pow(x, 2) + Math.Pow(y, 2) == 0)
                 Console.WriteLine("You bring to end game, press \" Enter \" to quit. ");
             else
-                Console.WriteLine("You opened all cells, press \" Enter \" to quit. ");
+                if (isOpenCells)
+                {
+                    Console.WriteLine("You opened all cells, press \" Enter \" to quit. ");
+                }
+                else
+                    if (countOpenCells == a.Length)
+                    {
+                        Console.WriteLine("You opened all cells, limit open mines more then count of mines, ");
+                        Console.WriteLine(" press \" Enter \" to quit. ");
+                    }
+                    else
+                        Console.WriteLine("You opened {0}  cells with mine, therefore game is end, " +
+                              " press \" Enter \" to quit. ", countOpenMines);
+            
             Console.ReadKey();
 
         }
@@ -180,7 +199,7 @@ namespace Miner
                     }
                     Console.ForegroundColor = prevFColor;
                     Console.WriteLine();
-                    count += Change(ref a, x - 1, y - 1);
+                    count += Change( a, x - 1, y - 1);
                     PrintColorPoleSelelction(a, x, y);
                     Console.WriteLine();
                 }
@@ -285,7 +304,7 @@ namespace Miner
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        static int Change(ref int[,] a, int x, int y)
+        static int Change(int[,] a, int x, int y)
         {
             int b = 1;
             if (x >= 0 && x < a.GetLength(0) && y >= 0 && y < a.GetLength(1))
