@@ -23,21 +23,52 @@ namespace Factorial
             Console.WriteLine("200! = " + FactForBigNumber1(200));
             Console.WriteLine(" BigInteger tsikl");
             Console.WriteLine("200! = " + FactForBigNumber2(200));
-            Console.WriteLine("Press Enter, ");
-            Console.ReadKey();
+            Console.WriteLine("Press Enter, or other key ");
+            Console.ReadKey(true);
             int number;
+
             do
             {
                 Console.WriteLine("Enter integer number:               0 - end of work");
                 number = IsIntegerNonNegative();
-                Console.WriteLine(number + "!=" + Fact(number));
-                Console.WriteLine(number + "!=" + FactForBigNumber1(number));
-                Console.WriteLine(number + "!=" + FactForBigNumber2(number));
+                try
+                {
+                    Console.WriteLine(number + "!=" + Fact(number));
+                    Console.WriteLine(number + "!=" + FactForBigNumber1(number));
+                    Console.WriteLine(number + "!=" + FactForBigNumber2(number));
+                }
+                catch (StackOverflowException)
+                {
+                    Console.WriteLine("Переполнение стека .");
 
+                }
             }
+
             while (number > 0);
-            UseBigInteger();
-            Console.ReadKey();
+            Console.WriteLine("End of work,  press Enter or other key ");
+            Console.ReadKey(true);
+
+
+
+           
+             number=200;
+
+            do
+            {
+
+                     Console.WriteLine(" Int");
+                    Console.WriteLine(number + "!=" + Fact(number));
+                    Console.WriteLine(" BigInteger recursion");
+                    Console.WriteLine(number + "!=" + FactForBigNumber1(number));
+                    Console.WriteLine(" BigInteger tsikl");
+                    Console.WriteLine(number + "!=" + FactForBigNumber2(number));
+                    Console.WriteLine("Enter integer number:               0 - end of work");
+                     number = IsIntegerNonNegative();
+            }
+
+            while (number > 0);
+            Console.WriteLine("End of work,  press Enter or other key ");
+            Console.ReadKey(true);
 
         }
         /// <summary>

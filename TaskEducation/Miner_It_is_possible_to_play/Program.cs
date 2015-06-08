@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-namespace Miner
+using System.IO;
+namespace Miner_It_is_possible_to_play
 {
     class Program
     {
@@ -24,33 +24,33 @@ namespace Miner
         {
             Game();
             Game(false);
-            Game(false,  2);
+            Game(false, 2);
         }
 
         /// <summary>
         /// Игра "Минёр"
         /// </summary>
         /// <param name="isOpenCells">Параметр имеет значение истина, если игра ведётся до момента открытия всех клеток,
-        ///                и ложь, если игра ведётся до открытия определённой по счету мины.   </param>
+        ///                и ложь, если игра ведётся до открытия всех пустых клеток без мин, .   </param>
         /// <param name="mines"> Параметр указывает, до какой по счету открытой мины ведётся игра.  </param>
-        static void Game(bool isOpenCells=true, int mines=1)
+        static void Game(bool isOpenCells = true, int mines = 0)
         {
             Console.WriteLine("Enter count_of_rows and count_of_colunms:");
             Console.Write("Count_of_rows = ");
-            int n = IsIntegerDiapason("Enter natural number:\r\n Count_of_rows = ",1);
+            int n = IsIntegerDiapason("Enter natural number:\r\n Count_of_rows = ", 1);
             Console.Write("Count_of_colunms = ");
-            int m = IsIntegerDiapason("Enter natural number:\r\n Count_of_columns = ",1);
-            
+            int m = IsIntegerDiapason("Enter natural number:\r\n Count_of_columns = ", 1);
+
             int countMines;
 
             int x = 0, y = 0;
-                Console.WriteLine("Enter count of mines:");
-                Console.Write("Count_of_mines = ");
-                int c = n * m;
-                countMines = IsIntegerDiapason("Enter natural number or 0:\r\n Pole can contain count of mines <= " 
-                                                    +( n * m) +"Count_of_mines = ", 0,(n*m));
-           
-            int [,] a = Initialize(n, m, countMines);
+            Console.WriteLine("Enter count of mines:");
+            Console.Write("Count_of_mines = ");
+            int c = n * m;
+            countMines = IsIntegerDiapason("Enter natural number or 0:\r\n Pole can contain count of mines <= "
+                                                + (n * m) + "Count_of_mines = ", 0, (n * m));
+
+            int[,] a = Initialize(n, m, countMines);
             PrintArray(a);
             Console.ReadKey();
             Console.Clear();
@@ -61,7 +61,7 @@ namespace Miner
             Console.ForegroundColor = prevFColor;
             Console.WriteLine();
             PrintColorPoleSelelction(a);
-           
+
             int countOpenCells = 0;
             int countOpenMines = 0;
 
@@ -70,11 +70,11 @@ namespace Miner
                 Console.WriteLine("Enter number_of_rou <= {0} and number_of_colunm <= {1}:", a.GetLength(0), a.GetLength(1));
                 Console.Write("Number_of_row = ");
                 x = IsIntegerDiapason("Enter natural number <=" + a.GetLength(0) + " :\r\n Number_of_row = ", 0);
-               
+
                 Console.Write("Number_of_colunm = ");
-                y = IsIntegerDiapason("Enter natural number <="+a.GetLength(1)+":\r\n Number_of_row = ",0);
-                 
-                if (x > 0  && y > 0)
+                y = IsIntegerDiapason("Enter natural number <=" + a.GetLength(1) + ":\r\n Number_of_row = ", 0);
+
+                if (x > 0 && y > 0)
                 {
                     Console.Clear();
 
@@ -103,20 +103,20 @@ namespace Miner
                     {
                         Console.WriteLine();
                         Console.ForegroundColor = ConsoleColor.Magenta;
-                        Console.WriteLine("You entered error coordinates, x={0}, y={1}  ",x,y);
+                        Console.WriteLine("You entered error coordinates, x={0}, y={1}  ", x, y);
                         Console.WriteLine("If you want to end game, enter numbers of row and column equal 0:    (0,0)");
                         Console.ForegroundColor = prevFColor;
                     }
 
             }
-            while (Math.Pow(x, 2) + Math.Pow(y, 2) != 0 && countOpenCells < a.Length && 
+            while (Math.Pow(x, 2) + Math.Pow(y, 2) != 0 && countOpenCells < a.Length &&
                                                      (isOpenCells || countOpenMines < mines));
             if (Math.Pow(x, 2) + Math.Pow(y, 2) == 0)
                 Console.WriteLine("You bring to end game, press \" Enter \" to quit. ");
             else
-                if (isOpenCells )
-                        Console.WriteLine("You opened all cells, press \" Enter \" to quit. ");
-                    
+                if (isOpenCells)
+                    Console.WriteLine("You opened all cells, press \" Enter \" to quit. ");
+
                 else
                     if (countOpenCells == a.Length)
                     {
@@ -126,12 +126,12 @@ namespace Miner
                     else
                         Console.WriteLine("You opened {0}  cells with mine, therefore game is end, " +
                               " press \" Enter \" to quit. ", countOpenMines);
-            
+
             Console.ReadKey();
 
         }
 
- 
+
 
 
 
@@ -166,10 +166,10 @@ namespace Miner
         /// <param name="message">Сообщение, которое выдается, если пользователь ввёл неверные данные </param>
         /// <returns></returns>
 
-        static int IsIntegerDiapason(string message = "Enter integer number:\r\n",int a=int.MinValue, int b=int.MaxValue)
+        static int IsIntegerDiapason(string message = "Enter integer number:\r\n", int a = int.MinValue, int b = int.MaxValue)
         {
             int t;
-            while (!int.TryParse(Console.ReadLine(), out t) || t<a || t>b)
+            while (!int.TryParse(Console.ReadLine(), out t) || t < a || t > b)
                 Console.Write(message);
             return t;
         }
@@ -403,6 +403,7 @@ namespace Miner
             Console.BackgroundColor = prevBColor;
             Console.ForegroundColor = prevFColor;
         }
+
 
     }
 }
