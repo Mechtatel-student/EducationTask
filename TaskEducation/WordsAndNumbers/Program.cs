@@ -30,7 +30,7 @@ namespace WordsAndNumbers
             int[] a = new int[st.Length];
             int n = 0;
             for (int i = 0; i < st.Length; i++)
-                if (st[i] == "")
+                if (String.IsNullOrWhiteSpace(st[i]))
                 {
                     a[i] = 0;
 
