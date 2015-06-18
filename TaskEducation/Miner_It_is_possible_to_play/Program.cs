@@ -26,6 +26,7 @@ namespace Miner_It_is_possible_to_play
         /// <param name="args"></param>
         static void Main(string[] args)
         {
+            
             Game();
             Game(false);
             Game(false, 2);

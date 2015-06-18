@@ -85,9 +85,12 @@ namespace Miner_It_is_possible_to_play
             bool b = false;
             if (ValidateCoordinates(row, col))
             {
-                if (Math.Abs(a[row, col]) >= 0)
-                {
-                    a[row, col] = -20 + a[row, col] % 10;
+                if (a[row, col] >= 0)
+                {  
+                    if (IsOpened(row,col))
+                        a[row, col] = a[row, col] -10;
+                    else
+                        a[row, col] = a[row, col] -30;
                     for (int i = row - 1; i <= row + 1; i++)
                         for (int j = col - 1; j <= col + 1; j++)
                             if (ValidateCoordinates(i, j))
