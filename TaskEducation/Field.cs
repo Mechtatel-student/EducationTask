@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 
-namespace Miner_It_is_possible_to_play
+namespace Miner
 {
     public class Field
     {
         private int[,] a;
-        public Field(int width=1, int heigth=1)
+        public Field(int width, int heigth)
         {
             if (width > 0 && heigth > 0)
                 a = new int[width, heigth];
