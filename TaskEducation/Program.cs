@@ -4,10 +4,9 @@ using NUnit.Framework;
 using System.Linq;
 using System.Text;
 
-namespace Miner_It_is_possible_to_play
+namespace Miner
 {
-    [TestFixture]
-    class Program
+    [TestFixture] class Program
     {
 
         /// <summary>
