@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using NUnit.Framework;
 
 namespace Miner_It_is_possible_to_play
 {
     public class Field
     {
         private int[,] a;
-        public Field(int width=1, int heigth=1)
+        public Field(int width, int heigth)
         {
             if (width > 0 && heigth > 0)
                 a = new int[width, heigth];
@@ -20,9 +19,6 @@ namespace Miner_It_is_possible_to_play
                 for (int j = 0; j < heigth; j++)
                     a[i, j] = 10;
         }
-
-        
-
         public int GetWidth()
         {
             return a.GetLength(0);

@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using NUnit.Framework;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+
+
+
 
 namespace Miner_It_is_possible_to_play
 {
-    [TestFixture]
     class Program
     {
 
@@ -23,24 +26,12 @@ namespace Miner_It_is_possible_to_play
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-
-            // Game();
-            // Game(false);
-            // Game(false, 2);
+            
+            Game();
+            Game(false);
+            Game(false, 2);
         }
 
-        static int Summa(int a, int b)
-        {
-            return a+b;
-        }
-
-        [Test] public static void MyTestFunc()
-        {
-            int a=2, b=3;
-            Assert.IsTrue(Summa(a,b)>=0);
-            Assert.IsInstanceOfType(typeof(int),Summa(a,b));
-            Assert.AreEqual(a+b,Summa(a,b));
-        }
         /// <summary>
         /// Игра "Минёр"
         /// </summary>
@@ -49,7 +40,7 @@ namespace Miner_It_is_possible_to_play
         /// <param name="mines"> Параметр указывает, до какой по счету открытой мины ведётся игра.  </param>
         static void Game(bool isOpenCells = true, int mines = 1)
         {
-
+            
             Console.WriteLine("Enter count_of_rows and count_of_colunms:");
             Console.Write("Count_of_rows = ");
             int n = IsIntegerDiapason("Enter natural number:\r\n Count_of_rows = ", 1);
@@ -65,7 +56,7 @@ namespace Miner_It_is_possible_to_play
             countMines = IsIntegerDiapason("Enter natural number or 0:\r\n Pole can contain count of mines <= "
                                                 + (n * m) + "Count_of_mines = ", 0, (n * m));
 
-
+            
             Field a = Initialize(n, m, countMines);
             PrintArray(a);
             Console.ReadKey();
@@ -93,7 +84,7 @@ namespace Miner_It_is_possible_to_play
 
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("You choose cell (" + x + "," + y + ")");
-                    if (a.IsEmpty(x - 1, y - 1))
+                    if (a.IsEmpty(x-1,y-1))
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("This cell is empty , safety, ");
@@ -122,7 +113,7 @@ namespace Miner_It_is_possible_to_play
             }
             while (Math.Abs(x) + Math.Abs(y) != 0 && a.CountOpenedCells() < a.GetCountCells() &&
                                                      (isOpenCells || a.CountOpenedCellsWithMine() < mines));
-            if (Math.Abs(x) + Math.Abs(y) == 0)
+            if (Math.Abs(x) + Math.Abs(y)  == 0)
                 Console.WriteLine("You bring to end game, press \" Enter \" to quit. ");
             else
                 if (isOpenCells)
@@ -198,20 +189,20 @@ namespace Miner_It_is_possible_to_play
         {
 
             Field res = new Field(n, m);
-
+                       
             Random r = new Random();
             int x = 0, y = 0;
-            do
-            {
-                x = r.Next(res.GetWidth());
-                y = r.Next(res.GetHeigth());
-                res.SetMine(x, y);
-            }
-            while (res.CountCellsWithMine() < b);
-
+                do 
+                {
+                    x = r.Next(res.GetWidth());
+                    y = r.Next(res.GetHeigth());
+                    res.SetMine(x, y);
+                }
+                while (res.CountCellsWithMine()<b);
+            
             return res;
         }
-
+        
 
         /// <summary>
         ///  Вывод на экран массива чисел, соответствующего полю.
@@ -223,12 +214,12 @@ namespace Miner_It_is_possible_to_play
             {
                 Console.Write(" ");
                 for (int j = 0; j < a.GetHeigth(); j++)
-                    Console.Write(a.GetCells(i, j) + "\t");
+                    Console.Write(a.GetCells(i,j) + "\t");
                 Console.WriteLine();
 
             }
         }
-
+        
 
 
 
@@ -313,11 +304,11 @@ namespace Miner_It_is_possible_to_play
                         Console.BackgroundColor = ConsoleColor.Yellow;
                     else
                         Console.BackgroundColor = ConsoleColor.White;
-                    if (a.IsOpened(i, j))
-                        if (a.IsEmpty(i, j))
+                    if (a.IsOpened(i,j))
+                        if (a.IsEmpty(i,j))
                         {
-                            Console.ForegroundColor = CurrentColorSymvol(a.CountMineAround(i, j));
-                            Console.Write(a.CountMineAround(i, j) + " ");
+                            Console.ForegroundColor = CurrentColorSymvol(a.CountMineAround(i,j));
+                            Console.Write(a.CountMineAround(i,j)+ " ");
                         }
                         else
                         {
