@@ -321,7 +321,6 @@
 </XPD:OBJ>
 <XPD:OBJ name="Operations[5]" type="UMLOperation" guid="ChT9jMAYfEm4LjT+Am/DlgAA">
 <XPD:ATTR name="Name" type="string">ValidateCoordinates</XPD:ATTR>
-<XPD:ATTR name="Visibility" type="UMLVisibilityKind">vkPrivate</XPD:ATTR>
 <XPD:REF name="Owner">0o9G3NXRE0O0RItMvAXtMAAA</XPD:REF>
 <XPD:ATTR name="#Parameters" type="integer">2</XPD:ATTR>
 <XPD:OBJ name="Parameters[0]" type="UMLParameter" guid="vVBYykLPu0aMsjEK5jlqgwAA">
@@ -430,7 +429,6 @@
 <XPD:ATTR name="#Attributes" type="integer">1</XPD:ATTR>
 <XPD:OBJ name="Attributes[0]" type="UMLAttribute" guid="FFEiljXe/0eo6935VD4MmgAA">
 <XPD:ATTR name="Name" type="string">a</XPD:ATTR>
-<XPD:ATTR name="Visibility" type="UMLVisibilityKind">vkPrivate</XPD:ATTR>
 <XPD:REF name="Owner">0o9G3NXRE0O0RItMvAXtMAAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>
