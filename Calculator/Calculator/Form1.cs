@@ -14,6 +14,9 @@ namespace Calculator
     {
         private double a=0;
         private double b=0;
+        private double memoryNumber = 0;
+
+
         private int i = 0;
         private bool isOperation = false;
         private bool isSecondOperand = false;
@@ -26,11 +29,31 @@ namespace Calculator
         private bool isPrintSymbols = true;
         private bool cl = true;
         private bool isPoint = false;
+
+private double[] arrayOfMemoryNumber=new double[5];
+private RadioButton[] arrayOfRadioButton = new RadioButton[5];
+private bool[] free = new bool[5];
+private int currentMemoryIndex = 0;
+        private int cur=0;
+
         public Form1()
         {
             InitializeComponent();
-            
-            textBox1.Text = "0";
+            arrayOfRadioButton[0] = nm1;
+            arrayOfRadioButton[1] = nm2;
+            arrayOfRadioButton[2] = nm3;
+            arrayOfRadioButton[3] = nm4;
+            arrayOfRadioButton[4] = nm5;
+            nm1.Text = Convert.ToString(arrayOfMemoryNumber[0]);
+            nm2.Text = Convert.ToString(arrayOfMemoryNumber[1]);
+            nm3.Text = Convert.ToString(arrayOfMemoryNumber[2]);
+            nm4.Text = Convert.ToString(arrayOfMemoryNumber[3]);
+            nm5.Text = Convert.ToString(arrayOfMemoryNumber[4]);
+            for (int i = 0; i < arrayOfMemoryNumber.Length; i++)
+            {
+                free[i] = true;
+            }
+                textBox1.Text = "0";
         }
 
 
@@ -175,9 +198,69 @@ namespace Calculator
             return s;
         }
 
-     
-       
-       
+
+        private void WriteToMemory()
+        {
+            
+                int i = 0;
+                for (i = 0; i < arrayOfMemoryNumber.Length; i++)
+                {
+                    if (free[i])
+                    {
+                        arrayOfMemoryNumber[i] = Convert.ToDouble(textBox1.Text);
+                        arrayOfRadioButton[i].Text =
+                                    Convert.ToString(arrayOfMemoryNumber[i]);
+                        free[i] = false;
+                        break;
+                    }
+                }
+                if (i >= arrayOfMemoryNumber.Length)
+                {
+                    MessageBox.Show("Память заполнена");
+                }
+               
+
+        }
+
+        private void AddToMemory()
+        {
+            double n = Convert.ToDouble(textBox1.Text);
+            n += arrayOfMemoryNumber[currentMemoryIndex];
+            textBox1.Text =
+                        Convert.ToString(n);
+        }
+        private void SubToMemory()
+        {
+            double n = Convert.ToDouble(textBox1.Text);
+            n -= arrayOfMemoryNumber[currentMemoryIndex];
+            textBox1.Text =
+                        Convert.ToString(n);
+        }
+
+        private void ClearAllMemory()
+        {
+            for (int i = 0; i < arrayOfMemoryNumber.Length; i++)
+            {
+                free[i] = true;
+                arrayOfMemoryNumber[i] = 0;
+                arrayOfRadioButton[i].Text =
+                            Convert.ToString(arrayOfMemoryNumber[i]);
+            }
+               
+        }
+        private void ShowAndClearMemory()
+        {
+            if (isOperation)
+            {
+                isDoOperation = true;
+            }
+            textBox1.Text = Convert.ToString(arrayOfMemoryNumber[currentMemoryIndex]);
+            arrayOfMemoryNumber[currentMemoryIndex] = 0;
+            free[currentMemoryIndex] = true;
+            arrayOfRadioButton[currentMemoryIndex].Text =
+                        Convert.ToString(arrayOfMemoryNumber[currentMemoryIndex]);
+           
+        }
 
         private void Number1_Click(object sender, EventArgs e)
         {
@@ -275,7 +358,59 @@ namespace Calculator
 
         }
 
+        private void WriteMemory_Click(object sender, EventArgs e)
+        {
+            WriteToMemory();
+        }
 
+        private void AddMemory_Click(object sender, EventArgs e)
+        {
+            AddToMemory();
+        }
+
+        private void SubMemory_Click(object sender, EventArgs e)
+        {
+            SubToMemory();
+        }
+
+        private void ShowNumberMemory_Click(object sender, EventArgs e)
+        {
+            ShowAndClearMemory();
+        }
+
+        private void ClearNumberMemory_Click(object sender, EventArgs e)
+        {
+            ClearAllMemory();
+        }
+
+        private void nm1_CheckedChanged(object sender, EventArgs e)
+        {
+            currentMemoryIndex = 0;
+        }
+
+        private void nm2_CheckedChanged(object sender, EventArgs e)
+        {
+            currentMemoryIndex = 1;
+        }
+
+        
+        
+        
+
+        private void nm3_CheckedChanged_1(object sender, EventArgs e)
+        {
+            currentMemoryIndex = 2;
+        }
+
+        private void nm4_CheckedChanged_1(object sender, EventArgs e)
+        {
+            currentMemoryIndex = 3;
+        }
+
+        private void nm5_CheckedChanged_1(object sender, EventArgs e)
+        {
+            currentMemoryIndex = 4;
+        }
  
         
     }

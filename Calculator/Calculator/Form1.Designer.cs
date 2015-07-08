@@ -47,11 +47,19 @@
             this.Number7 = new System.Windows.Forms.Button();
             this.Number0 = new System.Windows.Forms.Button();
             this.OpSub = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.Point = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
+            this.ClearNumberMemory = new System.Windows.Forms.Button();
+            this.WriteMemory = new System.Windows.Forms.Button();
+            this.AddMemory = new System.Windows.Forms.Button();
+            this.SubMemory = new System.Windows.Forms.Button();
+            this.ShowNumberMemory = new System.Windows.Forms.Button();
+            this.ArrayMemory = new System.Windows.Forms.GroupBox();
+            this.nm1 = new System.Windows.Forms.RadioButton();
+            this.nm2 = new System.Windows.Forms.RadioButton();
+            this.nm3 = new System.Windows.Forms.RadioButton();
+            this.nm4 = new System.Windows.Forms.RadioButton();
+            this.nm5 = new System.Windows.Forms.RadioButton();
+            this.ArrayMemory.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -269,38 +277,6 @@
             this.OpSub.UseVisualStyleBackColor = true;
             this.OpSub.Click += new System.EventHandler(this.OpSub_Click);
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Location = new System.Drawing.Point(271, 118);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(136, 59);
-            this.groupBox1.TabIndex = 20;
-            this.groupBox1.TabStop = false;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(6, 36);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(85, 17);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "radioButton2";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(6, 13);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(85, 17);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "radioButton1";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
             // Point
             // 
             this.Point.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -312,14 +288,141 @@
             this.Point.UseVisualStyleBackColor = true;
             this.Point.Click += new System.EventHandler(this.Point_Click);
             // 
+            // ClearNumberMemory
+            // 
+            this.ClearNumberMemory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ClearNumberMemory.Location = new System.Drawing.Point(330, 151);
+            this.ClearNumberMemory.Name = "ClearNumberMemory";
+            this.ClearNumberMemory.Size = new System.Drawing.Size(47, 29);
+            this.ClearNumberMemory.TabIndex = 22;
+            this.ClearNumberMemory.Text = "MC";
+            this.ClearNumberMemory.UseVisualStyleBackColor = true;
+            this.ClearNumberMemory.Click += new System.EventHandler(this.ClearNumberMemory_Click);
+            // 
+            // WriteMemory
+            // 
+            this.WriteMemory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.WriteMemory.Location = new System.Drawing.Point(276, 116);
+            this.WriteMemory.Name = "WriteMemory";
+            this.WriteMemory.Size = new System.Drawing.Size(30, 29);
+            this.WriteMemory.TabIndex = 23;
+            this.WriteMemory.Text = "M";
+            this.WriteMemory.UseVisualStyleBackColor = true;
+            this.WriteMemory.Click += new System.EventHandler(this.WriteMemory_Click);
+            // 
+            // AddMemory
+            // 
+            this.AddMemory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AddMemory.Location = new System.Drawing.Point(312, 116);
+            this.AddMemory.Name = "AddMemory";
+            this.AddMemory.Size = new System.Drawing.Size(42, 29);
+            this.AddMemory.TabIndex = 24;
+            this.AddMemory.Text = "M+";
+            this.AddMemory.UseVisualStyleBackColor = true;
+            this.AddMemory.Click += new System.EventHandler(this.AddMemory_Click);
+            // 
+            // SubMemory
+            // 
+            this.SubMemory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SubMemory.Location = new System.Drawing.Point(360, 116);
+            this.SubMemory.Name = "SubMemory";
+            this.SubMemory.Size = new System.Drawing.Size(42, 29);
+            this.SubMemory.TabIndex = 25;
+            this.SubMemory.Text = "M-";
+            this.SubMemory.UseVisualStyleBackColor = true;
+            this.SubMemory.Click += new System.EventHandler(this.SubMemory_Click);
+            // 
+            // ShowNumberMemory
+            // 
+            this.ShowNumberMemory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ShowNumberMemory.Location = new System.Drawing.Point(276, 151);
+            this.ShowNumberMemory.Name = "ShowNumberMemory";
+            this.ShowNumberMemory.Size = new System.Drawing.Size(48, 29);
+            this.ShowNumberMemory.TabIndex = 26;
+            this.ShowNumberMemory.Text = "MS";
+            this.ShowNumberMemory.UseVisualStyleBackColor = true;
+            this.ShowNumberMemory.Click += new System.EventHandler(this.ShowNumberMemory_Click);
+            // 
+            // ArrayMemory
+            // 
+            this.ArrayMemory.AutoSize = true;
+            this.ArrayMemory.Controls.Add(this.nm5);
+            this.ArrayMemory.Controls.Add(this.nm4);
+            this.ArrayMemory.Controls.Add(this.nm3);
+            this.ArrayMemory.Controls.Add(this.nm2);
+            this.ArrayMemory.Controls.Add(this.nm1);
+            this.ArrayMemory.Location = new System.Drawing.Point(423, 116);
+            this.ArrayMemory.Name = "ArrayMemory";
+            this.ArrayMemory.Size = new System.Drawing.Size(152, 123);
+            this.ArrayMemory.TabIndex = 27;
+            this.ArrayMemory.TabStop = false;
+            // 
+            // nm1
+            // 
+            this.nm1.AutoSize = true;
+            this.nm1.Checked = true;
+            this.nm1.Location = new System.Drawing.Point(6, 14);
+            this.nm1.Name = "nm1";
+            this.nm1.Size = new System.Drawing.Size(14, 13);
+            this.nm1.TabIndex = 0;
+            this.nm1.TabStop = true;
+            this.nm1.UseVisualStyleBackColor = true;
+            this.nm1.CheckedChanged += new System.EventHandler(this.nm1_CheckedChanged);
+            // 
+            // nm2
+            // 
+            this.nm2.AutoSize = true;
+            this.nm2.Location = new System.Drawing.Point(6, 33);
+            this.nm2.Name = "nm2";
+            this.nm2.Size = new System.Drawing.Size(14, 13);
+            this.nm2.TabIndex = 1;
+            this.nm2.TabStop = true;
+            this.nm2.UseVisualStyleBackColor = true;
+            this.nm2.CheckedChanged += new System.EventHandler(this.nm2_CheckedChanged);
+            // 
+            // nm3
+            // 
+            this.nm3.AutoSize = true;
+            this.nm3.Location = new System.Drawing.Point(6, 53);
+            this.nm3.Name = "nm3";
+            this.nm3.Size = new System.Drawing.Size(14, 13);
+            this.nm3.TabIndex = 2;
+            this.nm3.UseVisualStyleBackColor = true;
+            this.nm3.CheckedChanged += new System.EventHandler(this.nm3_CheckedChanged_1);
+            // 
+            // nm4
+            // 
+            this.nm4.AutoSize = true;
+            this.nm4.Location = new System.Drawing.Point(6, 72);
+            this.nm4.Name = "nm4";
+            this.nm4.Size = new System.Drawing.Size(14, 13);
+            this.nm4.TabIndex = 3;
+            this.nm4.UseVisualStyleBackColor = true;
+            this.nm4.CheckedChanged += new System.EventHandler(this.nm4_CheckedChanged_1);
+            // 
+            // nm5
+            // 
+            this.nm5.AutoSize = true;
+            this.nm5.Location = new System.Drawing.Point(6, 91);
+            this.nm5.Name = "nm5";
+            this.nm5.Size = new System.Drawing.Size(14, 13);
+            this.nm5.TabIndex = 4;
+            this.nm5.UseVisualStyleBackColor = true;
+            this.nm5.CheckedChanged += new System.EventHandler(this.nm5_CheckedChanged_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(419, 261);
+            this.ClientSize = new System.Drawing.Size(587, 261);
+            this.Controls.Add(this.ArrayMemory);
+            this.Controls.Add(this.ShowNumberMemory);
+            this.Controls.Add(this.SubMemory);
+            this.Controls.Add(this.AddMemory);
+            this.Controls.Add(this.WriteMemory);
+            this.Controls.Add(this.ClearNumberMemory);
             this.Controls.Add(this.Point);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.OpSub);
             this.Controls.Add(this.Number0);
             this.Controls.Add(this.Number7);
@@ -342,8 +445,8 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.ArrayMemory.ResumeLayout(false);
+            this.ArrayMemory.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -370,10 +473,18 @@
         private System.Windows.Forms.Button Number7;
         private System.Windows.Forms.Button Number0;
         private System.Windows.Forms.Button OpSub;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Button Point;
+        private System.Windows.Forms.Button ClearNumberMemory;
+        private System.Windows.Forms.Button WriteMemory;
+        private System.Windows.Forms.Button AddMemory;
+        private System.Windows.Forms.Button SubMemory;
+        private System.Windows.Forms.Button ShowNumberMemory;
+        private System.Windows.Forms.GroupBox ArrayMemory;
+        private System.Windows.Forms.RadioButton nm5;
+        private System.Windows.Forms.RadioButton nm4;
+        private System.Windows.Forms.RadioButton nm3;
+        private System.Windows.Forms.RadioButton nm2;
+        private System.Windows.Forms.RadioButton nm1;
     }
 }
 
