@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Students", "Students\Studen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator", "Calculator\Calculator.csproj", "{4C89E7D1-2426-4422-8466-4391CD14E8AF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListStructure", "ListStructure\ListStructure.csproj", "{1439DFE6-100D-43D8-85A7-0358A17E8498}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,10 @@ Global
 		{4C89E7D1-2426-4422-8466-4391CD14E8AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C89E7D1-2426-4422-8466-4391CD14E8AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C89E7D1-2426-4422-8466-4391CD14E8AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1439DFE6-100D-43D8-85A7-0358A17E8498}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1439DFE6-100D-43D8-85A7-0358A17E8498}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1439DFE6-100D-43D8-85A7-0358A17E8498}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1439DFE6-100D-43D8-85A7-0358A17E8498}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
