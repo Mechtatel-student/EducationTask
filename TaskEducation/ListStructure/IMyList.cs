@@ -12,7 +12,7 @@ namespace ListStructure
         public string member2;
     }
 
-    interface IMyList
+    interface IMyList : IEnumerable<Data>
     {
         void Add(Data d);
         void Clear();

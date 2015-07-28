@@ -11,29 +11,34 @@ namespace ListStructure
         private Data[] data =  new Data[0];
         int length = 0;
         private int indexFirst=0;
-        public int indexCurrent = 0;
+        private int indexCurrent = 0;
         Data emptyData = new Data { member1 = 0, member2 = "" };
+
+        private void AddElementWithIndex(Data d, int index)
+        {
+            if (index <= data.Length && index>=0)
+            {
+                Data[] newData = new Data[data.Length];
+                for (int i = 0; i < data.Length; i++)
+                {
+                    newData[i] = data[i];
+                }
+                data = new Data[data.Length+1];
+                for (int i = 0; i < index; i++)
+                {
+                    data[i] = newData[i];
+                }
+                data[index] = d;
+                for (int i = indexCurrent + 1; i < data.Length; i++)
+                {
+                    data[i] = newData[i - 1];
+                }
+            }
+        }
+
         public void Add(Data d)
         {
-            
-            int count = object.Equals(data,null)? 1:data.Length+1;
-
-            Data[] newData = new Data[count-1];
-            for (int i = 0; i < data.Length; i++)
-            {
-                newData[i] = data[i];
-            }
-            data=new Data[count];
-            for (int i = 0; i < indexCurrent; i++)
-            {
-                data[i] = newData[i];
-            }
-            data[indexCurrent] = d;
-            for (int i = indexCurrent+1; i < count; i++)
-            {
-                data[i] = newData[i-1];
-            }
-                
+            AddElementWithIndex(d, indexCurrent);
         }
 
         public void Clear()
@@ -87,8 +92,7 @@ namespace ListStructure
             }
             set
             {
-                data[0] = value;
-
+                AddElementWithIndex(value, 0);
             }
         }
 
@@ -103,13 +107,24 @@ namespace ListStructure
             }
             set
             {
-                data[indexCurrent]=value;
+                AddElementWithIndex(value, indexCurrent);
             }
         }
+
         public int GetLength()
         {
             return data.Length;
         }
-        
+
+
+        public IEnumerator<Data> GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
     }
 }
